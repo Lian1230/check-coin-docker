@@ -68,12 +68,15 @@ export const setLimit = newLimit => merge(limit, newLimit);
 export const formatQuery = (query) => {
   const output = {};
   for (const key of Object.keys(query)) {
-    if (!key.match(/(eth|btc|ltc)\.(low|high)/) || !query[key]) return false;
+    if (!key.match(/(eth|btc|ltc)\.(low|high)/)
+      || !query[key]
+      || !query[key].match(/[0-9]+/)
+    ) return false;
     const newKey = key
       .split('.')
       .map((value, index) => index === 0 ? value.toUpperCase() : value)
       .join('.');
-    const newValue = query[key] === 'null' ? null : query[key];
+    const newValue = query[key] === 'null' ? null : parseInt(query[key], 10);
     set(output, newKey, newValue);
   }
   return output;
