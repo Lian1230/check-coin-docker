@@ -10,7 +10,8 @@ export declare const limit: {
 };
 export declare const getPrice: () => Promise<any>;
 export declare const formatData: (data: any) => {
-    raw: any;
+    LIMIT: string;
+    RAW: string;
 };
 export declare const checkLimit: (data: any) => any[];
 export declare const sendAlert: (data: any, reached: any) => void;

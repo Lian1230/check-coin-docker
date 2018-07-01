@@ -24,9 +24,9 @@ exports.getPrice = () => axios_1.default.get('https://min-api.cryptocompare.com/
 exports.formatData = data => Object.keys(data)
     .reduce((obj, key) => (key !== 'CAD')
     ? Object.assign(obj, { [key]: data.CAD / data[key] })
-    : obj, { raw: data });
+    : obj, { LIMIT: JSON.stringify(exports.limit), RAW: JSON.stringify(data) });
 exports.checkLimit = data => Object.keys(data)
-    .filter(key => key !== 'raw' && !!exports.limit[key])
+    .filter(key => !!exports.limit[key])
     .reduce((reached, key) => {
     if (exports.limit[key].low && data[key] < exports.limit[key].low) {
         lodash_1.merge(exports.limit, { [key]: { low: null } });

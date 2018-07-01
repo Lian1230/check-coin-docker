@@ -7,13 +7,8 @@ const formattedData = {
   BTC: 8561.47021546261,
   ETH: 607.95,
   LTC: 109.9367088607595,
-  Limit: defaultLimit,
-  Raw: {
-    BTC: 0.07101,
-    CAD: 607.95,
-    ETH: 1,
-    LTC: 5.53,
-  },
+  LIMIT: '{"ETH":{"low":null,"high":null},"LTC":{"low":null,"high":null}}',
+  RAW: '{\"BTC\":0.07101,\"ETH\":1,\"LTC\":5.53,\"CAD\":607.95}',
 };
 const newLimit = { ETH: { low: 610 } };
 const query = {

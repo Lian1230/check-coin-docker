@@ -28,12 +28,12 @@ export const formatData = data => Object.keys(data)
     (obj, key) => (key !== 'CAD')
       ? Object.assign(obj, { [key]: data.CAD / data[key] })
       : obj,
-    { Limit: limit, Raw: data },
+    { LIMIT: JSON.stringify(limit), RAW: JSON.stringify(data) },
 );
 
 /* return array of coins that reached the limit */
 export const checkLimit = data => Object.keys(data)
-  .filter(key => key !== 'Raw' && !!limit[key])
+  .filter(key => !!limit[key])
   .reduce(
     (reached, key) => {
       if (limit[key].low && data[key] < limit[key].low) {
