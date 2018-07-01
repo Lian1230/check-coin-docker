@@ -17,7 +17,7 @@
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "webpack": "webpack --config webpack.config.js",
-    "deploy": "npm run build && heroku container:login && heroku container:push web -a check-coin && heroku container:release web -a check-coin"
+    "deploy": "yarn test && yarn build && heroku container:login && heroku container:push web -a check-coin && heroku container:release web -a check-coin"
   },
   "dependencies": {
     "@nestjs/common": "^5.0.0",
