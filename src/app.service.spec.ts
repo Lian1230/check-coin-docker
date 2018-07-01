@@ -2,11 +2,13 @@ import { merge } from 'lodash';
 import { formatQuery, limit, formatData, checkLimit, setLimit } from './lib';
 
 const mockRawData = { BTC: 0.07101, ETH: 1, LTC: 5.53, CAD: 607.95 };
+const defaultLimit = { ETH: { high: null, low: null }, LTC: { high: null, low: null } };
 const formattedData = {
   BTC: 8561.47021546261,
   ETH: 607.95,
   LTC: 109.9367088607595,
-  raw: {
+  Limit: defaultLimit,
+  Raw: {
     BTC: 0.07101,
     CAD: 607.95,
     ETH: 1,
@@ -14,7 +16,6 @@ const formattedData = {
   },
 };
 const newLimit = { ETH: { low: 610 } };
-const defaultLimit = { ETH: { high: null, low: null }, LTC: { high: null, low: null } };
 const query = {
   'eth.low': '500',
   'ltc.high': '300',
