@@ -20,8 +20,8 @@ const query = {
   'ltc.high': '300',
 };
 const formattedQuery = {
-  ETH: { low: '500' },
-  LTC: { high: '300' },
+  ETH: { low: 500 },
+  LTC: { high: 300 },
 };
 
 describe('Test format data', () => {

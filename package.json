@@ -8,7 +8,7 @@
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon",
     "start:debug": "nodemon --config nodemon-debug.json",
-    "prestart:prod": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc",
     "start:prod": "node dist/main.js",
     "start:hmr": "node dist/server",
     "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -17,7 +17,7 @@
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "webpack": "webpack --config webpack.config.js",
-    "deploy": "heroku container:login && heroku container:push web -a check-coin && heroku container:release web -a check-coin"
+    "deploy": "npm run build && heroku container:login && heroku container:push web -a check-coin && heroku container:release web -a check-coin"
   },
   "dependencies": {
     "@nestjs/common": "^5.0.0",
@@ -25,17 +25,18 @@
     "@nestjs/microservices": "^5.0.0",
     "@nestjs/testing": "^5.0.0",
     "@nestjs/websockets": "^5.0.0",
+    "lodash": "^4.17.10",
     "nodemailer": "^4.6.7",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0",
     "typescript": "^2.8.0"
   },
   "devDependencies": {
-    "@types/nodemailer": "^4.6.2",
     "@types/express": "^4.0.39",
     "@types/jest": "^21.1.8",
     "@types/lodash": "^4.14.110",
     "@types/node": "^9.3.0",
+    "@types/nodemailer": "^4.6.2",
     "@types/supertest": "^2.0.4",
     "jest": "^21.2.1",
     "nodemon": "^1.14.1",
